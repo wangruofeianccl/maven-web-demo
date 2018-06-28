@@ -7,10 +7,12 @@
 <title>登陆</title>
 </head>
 <body>
+<div style="height:100%;width:100%;text-align: center;">
     <form method="post">
         用户名：<input type="text" name="userName"><br>
         密码：<input type="text" name="password"><br>
         <input type="submit" value="登陆">
     </form>
+    </div>
 </body>
 </html>

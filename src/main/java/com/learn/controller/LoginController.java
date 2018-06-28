@@ -10,7 +10,7 @@ import com.learn.service.LoginService;
 
 @Controller // 注解为控制器
 @RequestMapping(value = "/login") // 截获带有/login的请求
-public class LoginController {
+public class LoginController extends BaseController{
 	@Autowired
 	LoginService loginService; // 注入service层
 
