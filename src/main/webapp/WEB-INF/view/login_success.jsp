@@ -55,7 +55,7 @@
 								cellspacing="0" width="100%" style="font-size: 14px">
 								<thead>
 									<tr>
-									    <td>ID</td>
+										<td>ID</td>
 										<td>用户名</td>
 										<td>密码</td>
 										<td>年龄</td>
@@ -67,58 +67,64 @@
 							</table>
 						</div>
 					</div>
-					
-					
-				<!-- 弹窗 -->
-				<div class="am-popup" id="my-popup"
-					style="display: block;">
-					<div class="am-popup-inner">
-						<div class="am-popup-hd">
-							<h4 id="popup-title" class="am-popup-title">用户</h4>
-							<span data-am-modal-close class="am-close">&times;</span>
-						</div>
-						<div class="am-popup-bd">
-							<div style="backgroun-color:whight;">
-							   <form action="" class="am-form" id="UseType">
-								  <fieldset>
-								   <div id="divicecode-box-id" class="am-form-group">
-								      <lable for="doc-vld-name-2" >用户名：</lable>
-								      <input type="text" id="userName" name="userName" required/>
-								    </div>
-								    <div class="am-form-group">
-								      <lable for="doc-vld-name-2" >密码：</lable>
-								      <input type="text" id="password" name="password"  required>
-								    </div>
-								    <div class="am-form-group">
-								      <lable for="doc-vld-name-2" >年龄：</lable>
-								      <input type="text" id="age" name="age">
-								    </div>
-								    <div class="am-form-group">
-								      <lable for="doc-vld-name-2" >性别：</lable>
-								      <input type="text" id="sex" name="sex">
-								    </div>
-								    <div class="am-form-group" style="display:none">
-								      <lable for="doc-vld-name-2" >ID：</lable>
-								      <input type="text" id="id" name="id">
-								    </div>
-								    <button type="submit" class="am-btn am-btn-success am-round am-btn-secondary" id="saveUseType"  style="margin-right:20px;margin-left:34%;">保存</button>
-								    <button id="btn-canncel" type="button" class="am-btn am-btn-default am-round" style="margin-left:20px;margin-right:30%;" onclick="formReset()">取消</button>
-								  </fieldset>
-								</form>
+
+
+					<!-- 弹窗 -->
+					<div class="am-popup" id="my-popup" style="display: block;">
+						<div class="am-popup-inner">
+							<div class="am-popup-hd">
+								<h4 id="popup-title" class="am-popup-title">用户</h4>
+								<span data-am-modal-close class="am-close">&times;</span>
 							</div>
-							
+							<div class="am-popup-bd">
+								<div style="backgroun-color: whight;">
+									<form action="" class="am-form" id="UseType">
+										<fieldset>
+											<div id="divicecode-box-id" class="am-form-group">
+												<lable for="doc-vld-name-2">用户名：</lable>
+												<input type="text" id="userName" name="userName" required />
+											</div>
+											<div class="am-form-group">
+												<lable for="doc-vld-name-2">密码：</lable>
+												<input type="text" id="password" name="password" required>
+											</div>
+											<div class="am-form-group">
+												<lable for="doc-vld-name-2">年龄：</lable>
+												<input type="text" id="age" name="age">
+											</div>
+											<div class="am-form-group">
+												<lable for="doc-vld-name-2">性别：</lable>
+												<input type="text" id="sex" name="sex">
+											</div>
+											<div class="am-form-group" style="display: none">
+												<lable for="doc-vld-name-2">ID：</lable>
+												<input type="text" id="id" name="id">
+											</div>
+											<button type="submit"
+												class="am-btn am-btn-success am-round am-btn-secondary"
+												id="saveUseType"
+												style="margin-right: 20px; margin-left: 34%;">保存</button>
+											<button id="btn-canncel" type="button"
+												class="am-btn am-btn-default am-round"
+												style="margin-left: 20px; margin-right: 30%;"
+												onclick="formReset()">取消</button>
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<!-- 弹窗 -->
-					
+					<!-- 弹窗 -->
+
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
+var table;
 var params={
 		
 };
@@ -148,7 +154,7 @@ function initData(){
 	                   }},
 	                   {"data" : "","orderable": false,"sDefaultContent" : "" ,
 	                    "render":function(data,type,row){
-							  return '<button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="editUseType(\''+row.id+'\')"><span class="am-icon-pencil-square-o"></span> 编辑</button><button type="button" id="delBtn" name="delBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-text-secondary" onclick="deleteUseType('+row.CODE+')"><span class="am-icon-trash-o"></span> 删除</button>';}        
+							  return '<button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="editUseType(\''+row.id+'\')"><span class="am-icon-pencil-square-o"></span> 编辑</button><button type="button" id="delBtn" name="delBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-text-secondary" onclick="deleteUseType('+row.id+')"><span class="am-icon-trash-o"></span> 删除</button>';}        
 	                    }
 	                  ]
 	  });
@@ -201,15 +207,14 @@ function initData(){
 							   success: function (data) {
 							     //console.log(data);
 							       if(data.success==true){
-							    	   $('#my-alert1').modal('open');
+							    	   //$('#my-alert1').modal('open');
 								       $('#my-popup').modal('close');
 								       table.ajax.reload();
 							       }else if(data.success==false){
-							    	   $('#my-alert2').modal('open');
+							    	   //$('#my-alert2').modal('open');
 								       $('#my-popup').modal('close');
 								       table.ajax.reload();
-				       }
-	       
+				                   }
 					      }
 					  };
 					   $("#UseType").ajaxForm(option);
@@ -228,26 +233,48 @@ function initData(){
 					id:id
 				},
 				url : '<%=request.getContextPath()%>/user/getUserById',
-						success : function(data) {
-					try {
-						//var pupData = $.parseJSON(data)[0];
-						//$('#newUseType').setForm(jsData);
-						$('#id').val(data.id);
-						$('#userName').val(data.userName);
-						$('#password').val(data.password);
-						$('#age').val(data.age);
-						$('#sex').val(data.sex);           
-					} catch (e) {
-					}
-				},
-				error : function() {
-				},
-				complete : function() {
-					$('#map-loading').hide();
+			success : function(data) {
+				try {
+					//var pupData = $.parseJSON(data)[0];
+					//$('#newUseType').setForm(jsData);
+					$('#id').val(data.id);
+					$('#userName').val(data.userName);
+					$('#password').val(data.password);
+					$('#age').val(data.age);
+					$('#sex').val(data.sex);
+				} catch (e) {
 				}
-			});
-	$('#my-popup').modal('open');
+			},
+			error : function() {
+			},
+			complete : function() {
+				$('#map-loading').hide();
+			}
+		});
+		$('#my-popup').modal('open');
+	}
+	
+		function deleteUseType(id){
+			//$confirm.modal({relatedTarget: this});
+		    $.ajax({
+                url: '<%=request.getContextPath()%>/user/delUser',
+                data: {
+                	id:id
+                },
+                method:"post",
+                dataType: 'json',
+                success: function(result) {
+                   if(result.success==true){
+                     // $('#my-alert3').modal('open');
+                      table.ajax.reload();
+                    }else if(result.success==false){
+                     /// $('#my-alert4').modal('open');
+                      table.ajax.reload();
+                     }
+                }
+            });
 		}
+		
 		
 </script>
 </html>

@@ -109,11 +109,11 @@ public class UserController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/delUser/{id}",method = RequestMethod.POST)
-	public Map<String,Object> delUser(@PathVariable("id") String userId) {
+	@RequestMapping(value="/delUser",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	public Map<String,Object> delUser(@RequestParam(value="id",required=false) String id) {
 		try {
-			if(!userId.isEmpty()||userId.length()>0) {
-				loginService.delById(userId);
+			if(!id.isEmpty()||id.length()>0) {
+				loginService.delById(id);
 				ret.put("success", true);
 			}
 			ret.put("success", false);

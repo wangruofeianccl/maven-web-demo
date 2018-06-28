@@ -67,7 +67,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	
 	 public int delById(String id) {
 			try {
-				List<?> users = getHibernateTemplate().find("from User where id=? ", id);
+				int _id=Integer.parseInt(id);
+				List<?> users = getHibernateTemplate().find("from User where id=? ", _id);
 				User user = users.size() > 0 ? (User) users.get(0) : null;
 				if(user==null)return 0;
 				getHibernateTemplate().delete(user);			
